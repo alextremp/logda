@@ -1,0 +1,61 @@
+{
+  "name": "logda",
+  "version": "0.0.1",
+  "description": "Improved logger for browser usage",
+  "main": "dist",
+  "keywords": [
+    "log",
+    "logger",
+    "browser"
+  ],
+  "author": "Alex Castells",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -Rf dist",
+    "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",
+    "prepack": "npm run clean && npm run build",
+    "test": "mocha --recursive --require @babel/register \"src/test/**/*Test.js\"",
+    "coverage": "istanbul cover --report html _mocha -- ./src/test* --recursive --compilers js:@babel/register",
+    "coverage:ci": "istanbul cover _mocha -- ./src/test* --recursive --compilers js:@babel/register && codecov",
+    "start:dev": "webpack-dev-server --config local/webpack.config.babel.js",
+    "lint": "sui-lint js",
+    "check": "npm run lint && npm run test",
+    "build": "babel src/main --out-dir dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/register": "^7.7.4",
+    "@babel/runtime": "^7.7.6",
+    "@s-ui/lint": "^3.14.0",
+    "babel-preset-sui": "^3.3.0",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "codecov": "^3.6.1",
+    "html-webpack-plugin": "^3.2.0",
+    "istanbul": "1.1.0-alpha.1",
+    "mocha": "5.2.0",
+    "sinon": "^7.5.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-modules-commonjs"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "prettier": "./node_modules/@s-ui/lint/.prettierrc.js",
+  "stylelint": {
+    "extends": "./node_modules/@s-ui/lint/stylelint.config.js"
+  }
+}
