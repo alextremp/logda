@@ -6,29 +6,34 @@ class LogdaLogger {
   }
 
   trace(provider) {
-    this._level.id < LEVEL.debug.id && this._log(this._console.trace, provider)
+    this._level.id < LEVEL.debug.id &&
+      this._log(LEVEL.trace.label, this._console.trace, provider)
   }
 
   debug(provider) {
-    this._level.id < LEVEL.info.id && this._log(this._console.log, provider)
+    this._level.id < LEVEL.info.id &&
+      this._log(LEVEL.debug.label, this._console.log, provider)
   }
 
   info(provider) {
-    this._level.id < LEVEL.warn.id && this._log(this._console.info, provider)
+    this._level.id < LEVEL.warn.id &&
+      this._log(LEVEL.info.label, this._console.info, provider)
   }
 
   warn(provider) {
-    this._level.id < LEVEL.error.id && this._log(this._console.warn, provider)
+    this._level.id < LEVEL.error.id &&
+      this._log(LEVEL.warn.label, this._console.warn, provider)
   }
 
   error(provider) {
-    this._level.id < LEVEL.off.id && this._log(this._console.error, provider)
+    this._level.id < LEVEL.off.id &&
+      this._log(LEVEL.error.label, this._console.error, provider)
   }
 
-  _log(writter, provider) {
+  _log(level, writter, provider) {
     try {
       const args = provider()
-      writter(`[${this._level.label}]${this._label}`, ...args)
+      writter(`[${level}]${this._label}`, ...args)
     } catch (e) {}
   }
 }
