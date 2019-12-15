@@ -1,5 +1,4 @@
 import {LEVEL} from './Level'
-import {configuration} from './Configuration'
 import {EMPTY, SEPARATOR} from './constants'
 
 class LogdaLogger {
@@ -7,7 +6,7 @@ class LogdaLogger {
     this._children = new Map()
     this._tags = tags
     this._label = this._createLabel()
-    this._level = level || configuration.getLevel()
+    this._level = level
     this._console = console
   }
 
