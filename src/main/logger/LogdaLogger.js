@@ -1,8 +1,32 @@
+import {LEVEL} from './Level'
+import {configuration} from './Configuration'
+import {EMPTY, SEPARATOR} from './constants'
+
 class LogdaLogger {
-  constructor({console, level = LEVEL.off, tag} = {}) {
+  constructor({tags = [], level} = {}) {
+    this._children = new Map()
+    this._tags = tags
+    this._label = this._createLabel()
+    this._level = level || configuration.getLevel()
     this._console = console
-    this._level = level
-    this._label = tag ? ` ${tag} |` : ''
+  }
+
+  _createLabel() {
+    const tagsLabel = this._tags.join(SEPARATOR)
+    return tagsLabel.length > 0 ? `${tagsLabel}>` : EMPTY
+  }
+
+  logger(tag) {
+    const child = new LogdaLogger({
+      tags: [...this._tags, tag],
+      level: this._level
+    })
+    this._children.set(tag, child)
+    return child
+  }
+
+  get level() {
+    return this._level.label
   }
 
   trace(provider) {
@@ -32,21 +56,14 @@ class LogdaLogger {
 
   _log(level, writter, provider) {
     try {
+      const label = `[${level}]>${this._label}`
       const args = provider()
-      writter(`[${level}]${this._label}`, ...args)
-    } catch (e) {}
+      if (Array.isArray(args)) writter(label, ...args)
+      else writter(label, args)
+    } catch (error) {
+      this.warn(() => ['Logging error:', provider, error])
+    }
   }
 }
 
-const makeLevel = (id, label) => ({id, label})
-
-const LEVEL = {
-  trace: makeLevel(1, 'TRACE'),
-  debug: makeLevel(2, 'DEBUG'),
-  info: makeLevel(3, 'INFO'),
-  warn: makeLevel(4, 'WARN'),
-  error: makeLevel(6, 'ERROR'),
-  off: makeLevel(7, 'OFF')
-}
-
-export {LogdaLogger, LEVEL}
+export {LogdaLogger}

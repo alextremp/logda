@@ -1,8 +1,7 @@
-import {LogdaLogger, LEVEL} from './logger/LogdaLogger'
+import {LogdaLogger} from './logger/LogdaLogger'
+import {configuration} from './logger/Configuration'
 
-const resolveLevel = input => LEVEL[input] || LEVEL.off
+const logda = tag => new LogdaLogger({tags: [tag]})
+const logdaLevel = level => configuration.configureLevel({level})
 
-const create = (tag, level) => new LogdaLogger({tag, level, console})
-const logda = ({tag, level}) => create(tag, resolveLevel(level), console)
-
-export {logda}
+export {logda, logdaLevel}
