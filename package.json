@@ -1,7 +1,7 @@
 {
   "name": "logda",
   "version": "0.0.1",
-  "description": "Improved logger for browser usage",
+  "description": "Efficient lightweight logger",
   "main": "dist",
   "keywords": [
     "log",

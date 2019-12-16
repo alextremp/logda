@@ -1,4 +1,5 @@
 export const GLOBAL_ITEM = '_LOGDA'
+export const LOCAL_STORAGE_LEVEL = GLOBAL_ITEM + '.level'
 export const DEFAULT_LEVEL = 'error'
 export const EMPTY = ''
 export const SEPARATOR = '|'

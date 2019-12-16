@@ -1,13 +1,12 @@
 import {LogdaLogger} from './logger/LogdaLogger'
-import {DEFAULT_LEVEL, GLOBAL_ITEM} from './logger/constants'
+import {DEFAULT_LEVEL, LOCAL_STORAGE_LEVEL} from './logger/constants'
 import {LEVEL, resolveLevel} from './logger/Level'
 
 const getStoredLevelLabel = () => {
   if (typeof window !== 'undefined') {
     try {
       const storedLevelLabel =
-        window.localStorage &&
-        window.localStorage.getItem(GLOBAL_ITEM + '.level')
+        window.localStorage && window.localStorage.getItem(LOCAL_STORAGE_LEVEL)
       return storedLevelLabel
     } catch (error) {}
   }
