@@ -1,8 +1,8 @@
 import {LogdaLogger} from './logger/LogdaLogger'
 import {DEFAULT_LEVEL, GLOBAL_ITEM} from './logger/constants'
-import {resolveLevel} from './logger/Level'
+import {LEVEL, resolveLevel} from './logger/Level'
 
-const getStoredLevel = () => {
+const getStoredLevelLabel = () => {
   if (typeof window !== 'undefined') {
     try {
       const storedLevelLabel =
@@ -13,15 +13,31 @@ const getStoredLevel = () => {
   }
 }
 
+let logdaLevel
+let storedLevelLabel = getStoredLevelLabel()
 let defaultLevel = resolveLevel(DEFAULT_LEVEL)
-const setLogdaLevel = level => (defaultLevel = resolveLevel(level))
 
-const logdaFactory = storedLevel => tag => {
+const updateLogdaLevel = () => {
+  storedLevelLabel = getStoredLevelLabel()
+  logdaLevel =
+    (storedLevelLabel &&
+      LEVEL[storedLevelLabel] &&
+      resolveLevel(storedLevelLabel)) ||
+    defaultLevel
+}
+
+const setLogdaLevel = level => {
+  defaultLevel = resolveLevel(level)
+  updateLogdaLevel()
+}
+
+const logdaFactory = () => tag => {
   return new LogdaLogger({
     tags: [tag],
-    level: (storedLevel && resolveLevel(storedLevel)) || defaultLevel
+    level: logdaLevel
   })
 }
-const logda = logdaFactory(getStoredLevel())
 
+updateLogdaLevel()
+const logda = logdaFactory()
 export {logda, setLogdaLevel}

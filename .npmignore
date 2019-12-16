@@ -1,0 +1,6 @@
+local
+coverage
+node_modules
+src
+.gitignore
+.idea

@@ -1,3 +1,4 @@
+import './support/mockGlobal'
 import {expect} from 'chai'
 import sinon from 'sinon'
 import {logda, setLogdaLevel} from './../main/index'
@@ -68,5 +69,12 @@ describe('index', () => {
     })
     expect(warnSpy.callCount).to.equal(1)
     expect(infoSpy.callCount).to.equal(0)
+  })
+
+  it('should override the level with the local storage level', () => {
+    window.localStorage.setItem('_LOGDA.level', 'debug')
+    setLogdaLevel('info')
+    const log = logda()
+    expect(log.level).to.equal(LEVEL.debug.label)
   })
 })
