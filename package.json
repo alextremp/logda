@@ -25,7 +25,8 @@
     "local": "webpack-dev-server --config local/webpack.config.babel.js",
     "lint": "sui-lint js",
     "check": "npm run lint && npm run test",
-    "build": "babel src/main --out-dir dist"
+    "build": "babel src/main --out-dir dist",
+    "versiona": "node versiona.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
@@ -39,13 +40,14 @@
     "clean-webpack-plugin": "^3.0.0",
     "codecov": "^3.6.1",
     "html-webpack-plugin": "^3.2.0",
-    "nyc": "^15.0.0",
     "jsdom": "15.2.1",
     "jsdom-global": "3.0.2",
     "loglevel": "^1.6.6",
     "mocha": "5.2.0",
+    "nyc": "^15.0.0",
     "querystring": "^0.2.0",
     "sinon": "^7.5.0",
+    "versiona": "^2.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
