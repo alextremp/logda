@@ -132,6 +132,7 @@ _npm run_...
 * **check** to run both lint&test
 * **coverage** to get an html test coverage report
 * **build** to build the project
+* **versiona** to publish a new version of the library (in Travis CI)
 
 ### Create a PR
 
@@ -148,3 +149,6 @@ This project uses Travis CI for:
 
 To create a new Release, take in mind:
 * The Release Tag must be named *vX.Y.Z* where X.Y.Z are the _semver_ numbers that will correspond to the published package's version.
+* Travis CI will launch the versiona.js script which will:
+  * Update the package.json to the X.Y.Z version set in the Release Tag
+  * Publish the NPM package with the X.Y.Z version
