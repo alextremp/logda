@@ -10,6 +10,7 @@
   ],
   "author": "Alex Castells",
   "license": "MIT",
+  "runkitExampleFile": "runkitExample.js",
   "scripts": {
     "clean": "rm -Rf dist",
     "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",

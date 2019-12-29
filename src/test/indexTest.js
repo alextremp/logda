@@ -96,7 +96,7 @@ describe('index', () => {
   })
 
   it('should override the level with the local storage level', () => {
-    window.localStorage.setItem('_LOGDA.level', 'debug')
+    window.localStorage.setItem('logda.level', 'debug')
     setLogdaLevel('info')
     const log = logda()
     expect(log.level).to.equal(LEVEL.debug.label)
