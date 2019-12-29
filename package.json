@@ -6,10 +6,15 @@
   "keywords": [
     "log",
     "logger",
+    "stacktrace",
+    "debug",
     "browser"
   ],
   "author": "Alex Castells",
   "license": "MIT",
+  "repository": "github:alextremp/logda",
+  "bugs": "https://github.com/alextremp/logda/issues",
+  "runkitExampleFile": "runkitExample.js",
   "scripts": {
     "clean": "rm -Rf dist",
     "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",
