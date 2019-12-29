@@ -11,9 +11,9 @@
 
 ## Features
 
-* :rocket: Efficient logger: Will not run unnecessary operations, as all logger operations are delegated with an arrow function
-* :sparkles: Pretty message printer: When enabled, distinguish different modules or files using tags 
-* :bulb: Developer ready: Set the __logda.level__ into your _window.localStorage_ to enable logda loggers for the apps you're reviewing (if you don't remove it from the local storage, you'll be able to review logs the next time you visit the page!)
+* :rocket: **Efficient logger**: Will not run unnecessary operations, as all logger operations are delegated with an arrow function
+* :sparkles: **Pretty printer**: When enabled, distinguish different modules or files using tags 
+* :bulb: **Developer ready**: Set the _logda.level_ into your _window.localStorage_ to enable logda loggers for the apps you're reviewing (if you don't remove it from the local storage, you'll be able to review logs the next time you visit the page!)
 
 ## Usage
 
