@@ -2,7 +2,7 @@ import {LEVEL} from './Level'
 import {EMPTY, SEPARATOR} from './constants'
 
 class LogdaLogger {
-  constructor({tags = [], level} = {}) {
+  constructor({tags = [], level}) {
     this._children = new Map()
     this._tags = tags
     this._label = this._createLabel()
@@ -11,7 +11,9 @@ class LogdaLogger {
   }
 
   _createLabel() {
-    const tagsLabel = this._tags.join(SEPARATOR)
+    const tagsLabel = this._tags
+      .filter(tag => tag && tag.length > 0)
+      .join(SEPARATOR)
     return tagsLabel.length > 0 ? `${tagsLabel}>` : EMPTY
   }
 
@@ -55,7 +57,7 @@ class LogdaLogger {
 
   _log(level, writter, provider) {
     try {
-      const label = `[${level}]>${this._label}`
+      const label = `[${level}] ${this._label}`
       const args = provider()
       if (Array.isArray(args)) writter(label, ...args)
       else writter(label, args)

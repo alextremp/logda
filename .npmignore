@@ -1,5 +1,6 @@
 local
 coverage
+.nyc_output
 node_modules
 src
 .gitignore

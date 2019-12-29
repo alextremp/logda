@@ -25,12 +25,12 @@ const updateLogdaLevel = () => {
     defaultLevel
 }
 
-const setLogdaLevel = level => {
+const setLogdaLevel = (level = 'error') => {
   defaultLevel = resolveLevel(level)
   updateLogdaLevel()
 }
 
-const logdaFactory = () => tag => {
+const logdaFactory = () => (tag = '') => {
   return new LogdaLogger({
     tags: [tag],
     level: logdaLevel
