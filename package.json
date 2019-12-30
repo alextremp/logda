@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": "github:alextremp/logda",
   "bugs": "https://github.com/alextremp/logda/issues",
-  "runkitExampleFile": "runkitExample.js",
+  "runkitExampleFilename": "runkitExample.js",
   "scripts": {
     "clean": "rm -Rf dist",
     "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",
