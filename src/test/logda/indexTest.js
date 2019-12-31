@@ -1,8 +1,8 @@
 import './support/mockGlobal'
 import {expect} from 'chai'
 import sinon from 'sinon'
-import {logda, setLogdaLevel} from './../main/index'
-import {LEVEL} from '../main/logger/Level'
+import {logda, setLogdaLevel} from '../../main/index'
+import {LEVEL} from '../../main/logger/Level'
 
 describe('index', () => {
   let consoleInfo
