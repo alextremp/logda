@@ -1,10 +1,12 @@
-# logda [![NPM Module](https://img.shields.io/npm/v/logda.svg)](https://www.npmjs.com/package/logda)
+<img alt="logda logo" src="https://repository-images.githubusercontent.com/228272146/e8140780-2d03-11ea-914a-91ce7e6fd5ba" width="300">
 
+[![NPM Module](https://img.shields.io/npm/v/logda.svg)](https://www.npmjs.com/package/logda)
 [![Build Status](https://travis-ci.org/alextremp/logda.svg?branch=master)](https://travis-ci.org/alextremp/logda)
 [![codecov](https://codecov.io/gh/alextremp/logda/branch/master/graph/badge.svg)](https://codecov.io/gh/alextremp/logda)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/alextremp/logda.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/alextremp/logda/context:javascript)
 [![Maintainability](https://api.codeclimate.com/v1/badges/53000060cbda73bad602/maintainability)](https://codeclimate.com/github/alextremp/logda/maintainability)
 
+# logda 
 **logda** is a lightweight efficient logger thought for developers who use to debug their libraries running in production when something goes wrong, without worrying about global objects or reconfigurations.
 
 * It works as a _console_ wrapper but with **level** capabilites, so no logs will be written down the desired level.
