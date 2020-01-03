@@ -26,6 +26,7 @@ describe('index', () => {
     console.error = consoleError
   })
   beforeEach(() => {
+    window.localStorage.setItem('logda.level', null)
     setLogdaLevel('info')
     infoSpy.resetHistory()
     warnSpy.resetHistory()
@@ -100,5 +101,16 @@ describe('index', () => {
     setLogdaLevel('info')
     const log = logda()
     expect(log.level).to.equal(LEVEL.debug.label)
+  })
+
+  it('should be able to update all loggers level', () => {
+    const logdaLogger = logda()
+    const log1 = logdaLogger.logger('Log1')
+    const log2 = logdaLogger.logger('Log2')
+    expect(log1.level).to.equal(LEVEL.info.label)
+    expect(log2.level).to.equal(LEVEL.info.label)
+    setLogdaLevel('debug')
+    expect(log1.level).to.equal(LEVEL.debug.label)
+    expect(log2.level).to.equal(LEVEL.debug.label)
   })
 })
